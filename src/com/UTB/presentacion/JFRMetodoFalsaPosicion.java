@@ -6,7 +6,7 @@
 package com.UTB.presentacion;
 
 import com.UTB.funcion.Function;
-import com.UTB.metodos.Bisection;
+import com.UTB.metodos.FalsePosition;
 import javax.swing.JOptionPane;
 import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.ParseException;
@@ -15,13 +15,14 @@ import org.nfunk.jep.ParseException;
  *
  * @author Cess
  */
-public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
+public class JFRMetodoFalsaPosicion extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JFRMetodoBiseccion
+     * Creates new form JFRMetodoFalsePosition
      */
     ColorTable color;
-    public JFRMetodoBiseccion() {
+
+    public JFRMetodoFalsaPosicion() {
         initComponents();
         this.tbResultado.setDefaultRenderer(Object.class, new ColorTable());
     }
@@ -60,7 +61,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SOLUCION DE ECUACIONES NO LINEALES - METODO BISECCION");
+        jLabel1.setText("SOLUCION DE ECUACIONES NO LINEALES - METODO FALSA POSICION");
 
         jLabel2.setText("FUNCION");
 
@@ -124,44 +125,40 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(225, 225, 225)
+                        .addGap(225, 225, 225)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(txtFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(txtFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtIntervalA, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jLabel5)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(txtErr, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(99, 99, 99)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(btnClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane1)))
+                                    .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIntervalA, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel5)
+                                .addGap(36, 36, 36)
+                                .addComponent(txtErr, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(99, 99, 99)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(btnClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -194,7 +191,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,6 +214,33 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+        try {
+            if (!(this.txtFunction.getText().isEmpty())
+                    && !this.txtIntervalA.getText().isEmpty()
+                    && !(this.txtIntervalB.getText().isEmpty())) {
+                DJep j = new DJep();
+                j.addStandardConstants();
+                j.addStandardFunctions();
+                j.parseExpression(this.txtIntervalA.getText());
+                double IA = j.getValue();
+                j.parseExpression(this.txtIntervalB.getText());
+                double IB = j.getValue();
+                FalsePosition falsePosition = new FalsePosition();
+                Function funcion = new Function(this.txtFunction.getText());
+                if (falsePosition.check(funcion, IA, IB)) {
+                    this.btnCalc.setEnabled(true);
+                } else {
+                    this.btnCalc.setEnabled(false);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Es necesario obtener los intervalos y una funcion", "No se pudo comprobar", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnCheckActionPerformed
+
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         try {
             if (!this.txtFunction.getText().isEmpty()
@@ -235,9 +259,9 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                 double err = j.getValue();
                 int i = Integer.parseInt(this.txtIteractions.getText());
                 Function funcion = new Function(this.txtFunction.getText());
-                Bisection biseccion = new Bisection();
+                FalsePosition falsePosition = new FalsePosition();
                 tbResultado.getModel();
-                biseccion.calcsInteractions(tbResultado, funcion, IA, IB, err, i);
+                falsePosition.calcFalsePosition(tbResultado, funcion, IA, IB, err, i);
             } else {
                 JOptionPane.showMessageDialog(null, "Hay uno o varios campos vacios", "No se pudo calcular", JOptionPane.ERROR_MESSAGE);
             }
@@ -245,33 +269,6 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_btnCalcActionPerformed
-
-    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
-        try {
-            if (!(this.txtFunction.getText().isEmpty())
-                    && !this.txtIntervalA.getText().isEmpty()
-                    && !(this.txtIntervalB.getText().isEmpty())) {
-                DJep j = new DJep();
-                j.addStandardConstants();
-                j.addStandardFunctions();
-                j.parseExpression(this.txtIntervalA.getText());
-                double IA = j.getValue();
-                j.parseExpression(this.txtIntervalB.getText());
-                double IB = j.getValue();
-                Bisection biseccion = new Bisection();
-                Function funcion = new Function(this.txtFunction.getText());
-                if (biseccion.check(funcion, IA, IB)) {
-                    this.btnCalc.setEnabled(true);
-                } else {
-                    this.btnCalc.setEnabled(false);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Es necesario obtener los intervalos y una funcion", "No se pudo comprobar", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_btnCheckActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

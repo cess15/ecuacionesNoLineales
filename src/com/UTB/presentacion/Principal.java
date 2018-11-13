@@ -125,7 +125,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bisectionMenuItemActionPerformed
 
     private void falsePositionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_falsePositionMenuItemActionPerformed
-        // TODO add your handling code here:
+        JFRMetodoFalsaPosicion falsePosition = new JFRMetodoFalsaPosicion();
+        OpenInternalFrame.charge(falsePosition, desktop);
     }//GEN-LAST:event_falsePositionMenuItemActionPerformed
 
     private void newtonMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newtonMenuItemActionPerformed
