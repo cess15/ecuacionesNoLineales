@@ -14,13 +14,13 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Cess
  */
-public class ColorTable extends DefaultTableCellRenderer {
+public class ColorTableNR extends DefaultTableCellRenderer {
 
     public Component getTableCellRendererComponent(final JTable table, Object value, boolean selected, boolean focused, int row, int column) {
         super.getTableCellRendererComponent(table, value, selected, focused, row, column);
         for (int i = 0; i < table.getRowCount(); i++) {
             if (row == i) {
-                if (column == 3) {
+                if (column == 2) {
                     setBackground(new Color(38, 107, 127));
                     setForeground(Color.WHITE);
                 }
@@ -31,4 +31,5 @@ public class ColorTable extends DefaultTableCellRenderer {
         }
         return this;
     }
+
 }

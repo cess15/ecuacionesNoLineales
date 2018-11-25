@@ -5,6 +5,7 @@
  */
 package com.UTB.funcion;
 
+import javax.swing.JOptionPane;
 import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
 import org.nfunk.jep.ParseException;
@@ -35,36 +36,37 @@ public class Function {
         dj.addComplex();;//por si existe algun numero complejo
         dj.setAllowUndeclared(true);//permite variables no declarables
         dj.setAllowAssignment(true);//permite asignaciones
-        dj.setImplicitMul(true);//regla de multiplicacion o para sustraccion y sumasif (dj.hasError()) {
+        dj.setImplicitMul(true);//regla de multiplicacion o para sustraccion y sumas
         dj.addStandardDiffRules();
     }
 
-    public String Derivate(String function) throws org.nfunk.jep.ParseException {
-        DJep j = new DJep();
-        String derivada = "NO hay derivada";
-        j.addStandardConstants();//agrega constantes estandares, pi, e, etc
-        j.addStandardFunctions();//agrega funciones estandares cos(x), sin(x)
-        j.addComplex();;//por si existe algun numero complejo
-        j.setAllowUndeclared(true);//permite variables no declarables
-        j.setAllowAssignment(true);//permite asignaciones
-        j.setImplicitMul(true);//regla de multiplicacion o para sustraccion y sumas
-        Node node = j.parse(function);
-        Node diff = j.differentiate(node, "x");
-        Node simp = j.simplify(diff);
-        derivada = j.toString(simp);
+    public String Derivate() {
+        String derivada = "";
+        try {
+            //coloca el nodo con una funcion preestablecida
+            Node node = dj.parse(f);
+            //deriva la funcion correcta a x
+            Node diff = dj.differentiate(node, "x");
+            //Simplificamos la funcion con respecto a x
+            Node simp = dj.simplify(diff);
+            //Convertimos el valor simplificado a un String
+            derivada = dj.toString(simp);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Función Incorrecta!", "ERROR: " + e.getMessage(), 0);
+        }
         return derivada;
     }
 
-    public Double eval(Double x) throws ParseException, Exception {
+    public Double eval(Double x) throws ParseException {
         Node re = null;
-        String val = "No se puede evaluar";
+        String r = "";
         dj.addVariable("x", x);
         try {
             re = dj.parse(f);
-        } catch (Exception e) {
-
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Función Incorrecta", "ERROR: " + ex.getMessage(), 0);
         }
-        val = (dj.evaluate(re)).toString();
-        return Double.parseDouble(val);
+        r = (dj.evaluate(re).toString());
+        return Double.parseDouble(r);
     }
 }

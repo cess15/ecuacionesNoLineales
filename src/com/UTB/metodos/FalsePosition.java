@@ -24,11 +24,10 @@ public class FalsePosition {
             double Fb = 0;
             Fa = fx.eval(intervalA);
             Fb = fx.eval(intervalB);
-            if (Fa * Fb < 0) {
-                JOptionPane.showMessageDialog(null, "Existe al menos una Raíz", "Verificación", 1);
+            if ((Fa * Fb) <= 0) {
                 root = true;
             } else {
-                JOptionPane.showMessageDialog(null, "No hay solucion en " + "[" + intervalA + "," + intervalB + "] o existe un numero par de raíces", "Verificación", 1);
+                root = false;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
@@ -56,7 +55,7 @@ public class FalsePosition {
             };
             table.setModel(model);
             double Xk1 = 0;
-            while (cont <= i) {
+            do {
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
                 Xk = ((intervalA * Fb) - (intervalB * Fa)) / (Fb - Fa);
@@ -79,12 +78,77 @@ public class FalsePosition {
                     intervalA = Xk;
                     Fa = Fx;
                 }
+                if (errorResult <= error) {
+                    break;
+                }
                 model.addRow(fila);
                 cont++;
-            }
+            } while (cont <= i);
             JOptionPane.showMessageDialog(
                     null, "La raíz es: " + Xk + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en el metodo falsa posicion: " + e.getMessage());
+        }
+    }
+
+    public void calcByExactRoot(JTable table, Function fx, double intervalA, double intervalB, double error, double raiz) {
+        try {
+            int cont = 1;
+            double Xi = 0;
+            double Fa = 0;
+            double Fxi = 0;
+            double Fb = 0;
+            double errorResult = 0;
+            double eva = 0;
+            DefaultTableModel model;
+            String[][] datos = {};
+            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            model = new DefaultTableModel(datos, nombre_columnas) {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+
+            };
+            table.setModel(model);
+            Fa = fx.eval(intervalA);
+            Fb = fx.eval(intervalB);
+            Xi = ((intervalA * Fb) - (intervalB * Fa)) / (Fb - Fa);
+            Fxi = fx.eval(Xi);
+            errorResult = Math.abs(raiz - Xi);
+            eva = fx.eval(raiz);
+            if (eva == 0) {
+                while (errorResult >= error) {
+                    Fa = fx.eval(intervalA);
+                    Fb = fx.eval(intervalB);
+                    Xi = ((intervalA * Fb) - (intervalB * Fa)) / (Fb - Fa);
+                    Fxi = fx.eval(Xi);
+                    errorResult = Math.abs(raiz - Xi);//devuelve el valor absoluto del error
+                    Object[] fila = {
+                        cont,
+                        intervalA,
+                        intervalB,
+                        Xi,
+                        Fa,
+                        Fb,
+                        Fxi,
+                        errorResult};
+                    if (Fxi < 0) {
+                        intervalA = Xi;
+                    } else {
+                        intervalB = Xi;
+                    }
+                    model.addRow(fila);
+                    cont++;
+                }
+                JOptionPane.showMessageDialog(
+                        null, "La raíz es: " + Xi + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                        "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "La raiz no es exacta",
+                        "RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en el metodo falsa posicion: " + e.getMessage());
         }

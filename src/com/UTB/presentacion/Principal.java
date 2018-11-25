@@ -130,7 +130,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_falsePositionMenuItemActionPerformed
 
     private void newtonMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newtonMenuItemActionPerformed
-        // TODO add your handling code here:
+        JFRMetodoNewtonRaphson raphson = new JFRMetodoNewtonRaphson();
+        OpenInternalFrame.charge(raphson, desktop);
     }//GEN-LAST:event_newtonMenuItemActionPerformed
 
     /**
