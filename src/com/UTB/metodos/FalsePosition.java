@@ -18,21 +18,9 @@ import org.nfunk.jep.ParseException;
 public class FalsePosition {
 
     public boolean check(Function fx, double intervalA, double intervalB) throws ParseException {
-        boolean root = false;
-        try {
-            double Fa = 0;
-            double Fb = 0;
-            Fa = fx.eval(intervalA);
-            Fb = fx.eval(intervalB);
-            if ((Fa * Fb) <= 0) {
-                root = true;
-            } else {
-                root = false;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
-        return root;
+        double Fa = fx.eval(intervalA);
+        double Fb = fx.eval(intervalB);
+        return Fa * Fb < 0;
     }
 
     public void calcFalsePosition(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
@@ -66,11 +54,11 @@ public class FalsePosition {
                     cont,
                     intervalA,
                     intervalB,
-                    Xk,
-                    Fa,
-                    Fb,
-                    Fx,
-                    errorResult};
+                    String.format("%10f", Xk),
+                    String.format("%10f", Fa),
+                    String.format("%10f", Fb),
+                    String.format("%10f", Fx),
+                    String.format("%20f", errorResult)};
                 if (Fa * Fx < 0) {
                     intervalB = Xk;
                     Fb = Fx;
@@ -78,14 +66,14 @@ public class FalsePosition {
                     intervalA = Xk;
                     Fa = Fx;
                 }
+                model.addRow(fila);
+                cont++;
                 if (errorResult <= error) {
                     break;
                 }
-                model.addRow(fila);
-                cont++;
             } while (cont <= i);
             JOptionPane.showMessageDialog(
-                    null, "La raíz es: " + Xk + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                    null, "La raíz es: " + String.format("%10f", Xk) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en el metodo falsa posicion: " + e.getMessage());
@@ -129,11 +117,11 @@ public class FalsePosition {
                         cont,
                         intervalA,
                         intervalB,
-                        Xi,
-                        Fa,
-                        Fb,
-                        Fxi,
-                        errorResult};
+                        String.format("%10f", Xi),
+                        String.format("%10f", Fa),
+                        String.format("%10f", Fb),
+                        String.format("%10f", Fxi),
+                        String.format("%20f", errorResult)};
                     if (Fxi < 0) {
                         intervalA = Xi;
                     } else {
@@ -143,7 +131,7 @@ public class FalsePosition {
                     cont++;
                 }
                 JOptionPane.showMessageDialog(
-                        null, "La raíz es: " + Xi + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                        null, "La raíz es: " + String.format("%10f", Xi) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "La raiz no es exacta",

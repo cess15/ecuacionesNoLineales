@@ -22,7 +22,7 @@ public class JFRMetodoNewtonRaphson extends javax.swing.JInternalFrame {
      * Creates new form JFRMetodoNewtonRapson
      */
     ColorTableNR color;
-    
+
     public JFRMetodoNewtonRaphson() {
         initComponents();
         this.tbResultado.setDefaultRenderer(Object.class, new ColorTableNR());
@@ -207,13 +207,13 @@ public class JFRMetodoNewtonRaphson extends javax.swing.JInternalFrame {
             NewtonRaphson newton = new NewtonRaphson();
             tbResultado.getModel();
             try {
-                if (newton.check(funcion, interval) == true) {
+                if (!newton.check(funcion, interval)) {
                     newton.calcNewtonRaphson(tbResultado, funcion, interval, err, i);
                 } else {
                     JOptionPane.showMessageDialog(null, "El intervalo no debe ser 0", "Aviso", 1);
                 }
             } catch (ParseException e) {
-                
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en vista: " + e.getMessage());

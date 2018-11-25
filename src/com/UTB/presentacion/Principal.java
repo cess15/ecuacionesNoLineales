@@ -76,6 +76,11 @@ public class Principal extends javax.swing.JFrame {
         fileMenu.add(newtonMenuItem);
 
         secanteMenuItem.setText("Método Secante");
+        secanteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secanteMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(secanteMenuItem);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
@@ -133,6 +138,11 @@ public class Principal extends javax.swing.JFrame {
         JFRMetodoNewtonRaphson raphson = new JFRMetodoNewtonRaphson();
         OpenInternalFrame.charge(raphson, desktop);
     }//GEN-LAST:event_newtonMenuItemActionPerformed
+
+    private void secanteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secanteMenuItemActionPerformed
+        JFRMetodoSecante secante = new JFRMetodoSecante();
+        OpenInternalFrame.charge(secante, desktop);
+    }//GEN-LAST:event_secanteMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

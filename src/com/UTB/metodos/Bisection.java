@@ -18,21 +18,9 @@ import org.nfunk.jep.ParseException;
 public class Bisection {
 
     public boolean check(Function f, double intervalA, double intervalB) throws ParseException {
-        boolean root = false;
-        try {
-            double Fa = 0;
-            double Fb = 0;
-            Fa = f.eval(intervalA);
-            Fb = f.eval(intervalB);
-            if (Fa * Fb <= 0) {
-                root = true;
-            } else {
-                root = false;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
-        return root;
+        double Fa = f.eval(intervalA);
+        double Fb = f.eval(intervalB);
+        return Fa * Fb <= 0;
     }
 
     public void calcsInteractions(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
@@ -66,24 +54,24 @@ public class Bisection {
                             cont,
                             intervalA,
                             intervalB,
-                            Xk,
-                            Fa,
-                            Fb,
-                            fXk,
-                            errorResult};
+                            String.format("%10f", Xk),
+                            String.format("%10f", Fa),
+                            String.format("%10f", Fb),
+                            String.format("%10f", fXk),
+                            String.format("%20f", errorResult)};
                 if (fXk * Fa <= 0) {
                     intervalB = Xk;
                 } else {
                     intervalA = Xk;
                 }
+                model.addRow(row);
+                cont++;
                 if (errorResult <= error) {
                     break;
                 }
-                model.addRow(row);
-                cont++;
             }
             JOptionPane.showMessageDialog(
-                    null, "La raíz es: " + Xk + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                    null, "La raíz es: " + String.format("%10f", Xk) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en el metodo biseccion: " + e.getMessage());
@@ -124,11 +112,11 @@ public class Bisection {
                         cont,
                         intervalA,
                         intervalB,
-                        Xi,
-                        Fa,
-                        Fb,
-                        fXi,
-                        ResultadoError
+                        String.format("%10f", Xi),
+                        String.format("%10f", Fa),
+                        String.format("%10f", Fb),
+                        String.format("%10f", fXi),
+                        String.format("%20f", ResultadoError)
                     };
                     if (fXi < 0) {
                         intervalA = Xi;
@@ -138,7 +126,7 @@ public class Bisection {
                     model.addRow(fila);
                     cont++;
                 }
-                JOptionPane.showMessageDialog(null, "FELICIDADES SU RESPUESTA ES: " + Xi + " \n ENCONTRADA EN " + (cont - 1) + " PASOS",
+                JOptionPane.showMessageDialog(null, "FELICIDADES SU RESPUESTA ES: " + String.format("%10f", Xi) + " \n ENCONTRADA EN " + (cont - 1) + " PASOS",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Esa no es la raiz exacta",

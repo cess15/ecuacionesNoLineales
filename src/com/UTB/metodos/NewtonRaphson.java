@@ -18,22 +18,10 @@ import org.nfunk.jep.ParseException;
 public class NewtonRaphson {
 
     public boolean check(Function f, double interval) throws ParseException {
-        boolean root = false;
-        double Fix = 0;
-        String derivada = null;
-        try {
-            derivada = f.Derivate();
-            Function f2 = new Function(derivada);
-            Fix = f2.eval(interval);
-            if (Fix != 0) {
-                root = true;
-            } else {
-                root = false;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
-        return root;
+        String derivada = f.Derivate();
+        Function f2 = new Function(derivada);
+        double Fix = f2.eval(interval);
+        return Fix == 0;
     }
 
     public void calcNewtonRaphson(JTable table, Function fx, double interval, double error, int i) throws Exception {
@@ -45,7 +33,6 @@ public class NewtonRaphson {
             double errorResult = 0;
             double x2 = 0;
             double xAnt = 0;
-            String a4 = null;
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "xi", "F(xi)", "F'(xi)", "Error"};
@@ -67,18 +54,16 @@ public class NewtonRaphson {
                 x2 = -((Fxi) / (Fix));
                 xi = xi + (x2);
                 errorResult = Math.abs(xi - xAnt);
-                a4 = String.format("%20f", errorResult);
-                if (errorResult >= error) {
-                    Object[] fila = {
-                        cont,
-                        xAnt,
-                        Fxi,
-                        Fix,
-                        a4
-                    };
-                    model.addRow(fila);
-                    cont++;
-                } else {
+                Object[] fila = {
+                    cont,
+                    xAnt,
+                    String.format("%10f", Fxi),
+                    String.format("%10f", Fix),
+                    String.format("%20f", errorResult)
+                };
+                model.addRow(fila);
+                cont++;
+                if (errorResult <= error) {
                     break;
                 }
             }
@@ -87,7 +72,7 @@ public class NewtonRaphson {
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en metodo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en metodo Newton: " + e.getMessage());
         }
 
     }

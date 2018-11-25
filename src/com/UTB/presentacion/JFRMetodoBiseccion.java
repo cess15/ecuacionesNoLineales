@@ -277,7 +277,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                         Bisection biseccion = new Bisection();
                         tbResultado.getModel();
                         try {
-                            if (biseccion.check(funcion, IA, IB) == true) {
+                            if (biseccion.check(funcion, IA, IB)) {
                                 biseccion.calcsInteractions(tbResultado, funcion, IA, IB, err, i);
                             } else {
                                 JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
@@ -291,7 +291,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                         Bisection biseccion = new Bisection();
                         tbResultado.getModel();
                         try {
-                            if (biseccion.check(funcion, IA, IB) == true) {
+                            if (biseccion.check(funcion, IA, IB)) {
                                 biseccion.calcByExactRoot(tbResultado, funcion, IA, IB, err, raiz);
                             } else {
                                 JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
