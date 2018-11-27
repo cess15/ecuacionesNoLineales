@@ -56,7 +56,7 @@ public class NewtonRaphson {
                 errorResult = Math.abs(xi - xAnt);
                 Object[] fila = {
                     cont,
-                    xAnt,
+                    String.format("%10f", xAnt),
                     String.format("%10f", Fxi),
                     String.format("%10f", Fix),
                     String.format("%20f", errorResult)
@@ -68,12 +68,68 @@ public class NewtonRaphson {
                 }
             }
             JOptionPane.showMessageDialog(
-                    null, "La raíz es: " + xAnt + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                    null, "La raíz es: " + String.format("%10f", xAnt) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en metodo Newton: " + e.getMessage());
         }
 
+    }
+
+    public void calcNewtonRaphsonByRoot(JTable table, Function fx, double interval, double error, double raiz) throws Exception {
+        try {
+            int cont = 1;
+            double Fxi = 0;
+            String derivada = null;
+            double Fix = 0;
+            double errorResult = 0;
+            double x2 = 0;
+            double eva = 0;
+            DefaultTableModel model;
+            String[][] datos = {};
+            String[] nombre_columnas = {"i", "xi", "F(xi)", "F'(xi)", "Error"};
+            model = new DefaultTableModel(datos, nombre_columnas) {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+
+            };
+            table.setModel(model);
+            errorResult = Math.abs(raiz - interval);
+            eva = fx.eval(raiz);
+            if (eva == 0) {
+                while (errorResult >= error) {
+                    Fxi = fx.eval(interval);
+                    errorResult = Math.abs(raiz - interval);
+                    Object[] fila = {
+                        cont,
+                        String.format("%10f", interval),
+                        String.format("%10f", Fxi),
+                        String.format("%10f", Fix),
+                        String.format("%20f", errorResult)
+                    };
+                    model.addRow(fila);
+                    derivada = fx.Derivate();
+                    Function f2 = new Function(derivada);
+                    Fix = f2.eval(interval);
+                    x2 = -((Fxi) / (Fix));
+                    interval = interval + (x2);
+                    cont++;
+                    if (errorResult <= error) {
+                        break;
+                    }
+                }
+                JOptionPane.showMessageDialog(
+                        null, "La raíz es: " + String.format("%10f", interval) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                        "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Esa no es la raiz exacta",
+                        "RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en metodo Newton: " + e.getMessage());
+        }
     }
 }

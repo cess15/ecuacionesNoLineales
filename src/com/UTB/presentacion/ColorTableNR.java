@@ -20,7 +20,7 @@ public class ColorTableNR extends DefaultTableCellRenderer {
         super.getTableCellRendererComponent(table, value, selected, focused, row, column);
         for (int i = 0; i < table.getRowCount(); i++) {
             if (row == i) {
-                if (column == 2) {
+                if (column == 1) {
                     setBackground(new Color(38, 107, 127));
                     setForeground(Color.WHITE);
                 }

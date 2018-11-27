@@ -21,11 +21,11 @@ public class JFRMetodoSecante extends javax.swing.JInternalFrame {
     /**
      * Creates new form JFRMetodoSecante
      */
-    ColorTableS color;
+    ColorTableNR color;
 
     public JFRMetodoSecante() {
         initComponents();
-        this.tbResultado.setDefaultRenderer(Object.class, new ColorTableS());
+        this.tbResultado.setDefaultRenderer(Object.class, new ColorTableNR());
     }
 
     /**

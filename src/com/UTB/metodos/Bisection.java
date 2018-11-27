@@ -45,10 +45,10 @@ public class Bisection {
             table.setModel(model);
             while (cont <= i) {
                 Xk = (intervalA + intervalB) / 2;
+                errorResult = Math.abs(intervalB - intervalA);//devuelve el valor absoluto del error
                 fXk = fx.eval(Xk);
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
-                errorResult = Math.abs(intervalB - intervalA);//devuelve el valor absoluto del error
                 Object[] row
                         = {
                             cont,
@@ -59,13 +59,13 @@ public class Bisection {
                             String.format("%10f", Fb),
                             String.format("%10f", fXk),
                             String.format("%20f", errorResult)};
-                if (fXk * Fa <= 0) {
+                model.addRow(row);
+                cont++;
+                if (fXk * Fa < 0) {
                     intervalB = Xk;
                 } else {
                     intervalA = Xk;
                 }
-                model.addRow(row);
-                cont++;
                 if (errorResult <= error) {
                     break;
                 }
