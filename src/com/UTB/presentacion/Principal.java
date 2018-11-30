@@ -40,14 +40,18 @@ public class Principal extends javax.swing.JFrame {
         newtonMenuItem = new javax.swing.JMenuItem();
         secanteMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        desktop.setBackground(new java.awt.Color(204, 204, 255));
+
+        menuBar.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+
+        fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UTB/recursos/menu-de-lineas.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("Métodos");
 
+        bisectionMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UTB/recursos/menos-simbolo.png"))); // NOI18N
         bisectionMenuItem.setMnemonic('o');
         bisectionMenuItem.setText("Método Bisección");
         bisectionMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +61,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(bisectionMenuItem);
 
+        falsePositionMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UTB/recursos/menos-simbolo.png"))); // NOI18N
         falsePositionMenuItem.setMnemonic('s');
         falsePositionMenuItem.setText("Método Falsa Posición");
         falsePositionMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +71,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(falsePositionMenuItem);
 
+        newtonMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UTB/recursos/menos-simbolo.png"))); // NOI18N
         newtonMenuItem.setMnemonic('a');
         newtonMenuItem.setText("Método Newton - Rhapson");
         newtonMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +81,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(newtonMenuItem);
 
+        secanteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UTB/recursos/menos-simbolo.png"))); // NOI18N
         secanteMenuItem.setText("Método Secante");
         secanteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +91,7 @@ public class Principal extends javax.swing.JFrame {
         fileMenu.add(secanteMenuItem);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UTB/recursos/salida.png"))); // NOI18N
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -95,15 +103,6 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Ayuda");
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("Acerca de");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,7 +113,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,13 +179,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem bisectionMenuItem;
     public static javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenuItem falsePositionMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newtonMenuItem;
     private javax.swing.JMenuItem secanteMenuItem;

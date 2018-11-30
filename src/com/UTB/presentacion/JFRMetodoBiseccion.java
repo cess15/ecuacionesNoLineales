@@ -62,23 +62,30 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
 
-        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane1.setBackground(new java.awt.Color(153, 153, 255));
 
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SOLUCION DE ECUACIONES NO LINEALES - METODO BISECCION");
 
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel2.setText("FUNCION");
 
+        jLabel3.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel3.setText("Intervalo A: ");
 
+        jLabel4.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel4.setText("Intervalo B: ");
 
+        jLabel5.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel5.setText("Error: ");
 
+        jLabel6.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel6.setText("Número de Iteraciones");
 
         txtIteractions.setEnabled(false);
 
+        jLabel7.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("TABLA DE RESULTADOS");
 
@@ -92,6 +99,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tbResultado);
 
+        btnCalc.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         btnCalc.setText("Calcular");
         btnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +107,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
             }
         });
 
+        btnClean.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         btnClean.setText("Borrar");
         btnClean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +115,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel8.setText("Calcular mediante: ");
 
         comboOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione una opcion-", "1. Iteracciones", "2. Raiz Exacta" }));
@@ -115,6 +125,7 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel9.setText("Raiz Exacta: ");
 
         txtExactRoot.setEnabled(false);
@@ -144,60 +155,57 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(273, 273, 273)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(comboOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtIntervalA))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtIteractions)))
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(39, 39, 39)
-                                                .addComponent(jLabel5)
-                                                .addGap(36, 36, 36))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel9)
-                                                .addGap(25, 25, 25)))
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtExactRoot)
-                                            .addComponent(txtErr, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(99, 99, 99)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(comboOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtIntervalA, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(btnClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane1)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addComponent(jLabel5)
+                                        .addGap(36, 36, 36))
+                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel9)
+                                        .addGap(25, 25, 25)))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtErr)
+                                    .addComponent(txtExactRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(120, 120, 120)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)))
                 .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,37 +235,75 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOptionActionPerformed
+        if (this.txtFunction.getText().isEmpty()
+            || (this.txtIntervalA.getText().isEmpty())
+            || (this.txtIntervalB.getText().isEmpty())
+            || (this.txtErr.getText().isEmpty())) {
+            this.comboOption.setSelectedIndex(0);
+            JOptionPane.showMessageDialog(null, "LLENE PRIMERO TODOS LOS CAMPOS ",
+                "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            int option = this.comboOption.getSelectedIndex();
+            if (option == 1) {
+                this.jLabel6.setVisible(true);
+                this.txtIteractions.setVisible(true);
+                this.txtIteractions.setEnabled(true);
+                this.jLabel9.setVisible(false);
+                this.txtExactRoot.setVisible(false);
+                this.txtExactRoot.setEnabled(false);
+                this.txtExactRoot.setText("");
+            }
+            if (option == 2) {
+                this.jLabel9.setVisible(true);
+                this.txtExactRoot.setVisible(true);
+                this.txtExactRoot.setEnabled(true);
+                this.jLabel6.setVisible(false);
+                this.txtIteractions.setVisible(false);
+                this.txtIteractions.setEnabled(false);
+                this.txtIteractions.setText("");
+            }
+        }
+    }//GEN-LAST:event_comboOptionActionPerformed
+
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+        this.txtFunction.setText("");
+        this.txtIntervalA.setText("");
+        this.txtIntervalB.setText("");
+        this.txtIteractions.setText("");
+        this.txtExactRoot.setText("");
+        this.txtErr.setText("");
+        DefaultTableModel a = (DefaultTableModel) tbResultado.getModel();
+        while (a.getRowCount() > 0) {
+            a.removeRow(0);
+        }
+    }//GEN-LAST:event_btnCleanActionPerformed
+
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         try {
             if (!this.txtFunction.getText().isEmpty()
-                    && !(this.txtIntervalA.getText().isEmpty())
-                    && !(this.txtIntervalB.getText().isEmpty())
-                    && !(this.txtErr.getText().isEmpty())
-                    || !(this.txtIteractions.getText().isEmpty())
-                    || !(this.txtExactRoot.getText().isEmpty())) {
+                && !(this.txtIntervalA.getText().isEmpty())
+                && !(this.txtIntervalB.getText().isEmpty())
+                && !(this.txtErr.getText().isEmpty())
+                || !(this.txtIteractions.getText().isEmpty())
+                || !(this.txtExactRoot.getText().isEmpty())) {
                 DJep j = new DJep();
                 j.addStandardConstants();
                 j.addStandardFunctions();
@@ -310,51 +356,6 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_btnCalcActionPerformed
-
-    private void comboOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOptionActionPerformed
-        if (this.txtFunction.getText().isEmpty()
-                || (this.txtIntervalA.getText().isEmpty())
-                || (this.txtIntervalB.getText().isEmpty())
-                || (this.txtErr.getText().isEmpty())) {
-            this.comboOption.setSelectedIndex(0);
-            JOptionPane.showMessageDialog(null, "LLENE PRIMERO TODOS LOS CAMPOS ",
-                    "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            int option = this.comboOption.getSelectedIndex();
-            if (option == 1) {
-                this.jLabel6.setVisible(true);
-                this.txtIteractions.setVisible(true);
-                this.txtIteractions.setEnabled(true);
-                this.jLabel9.setVisible(false);
-                this.txtExactRoot.setVisible(false);
-                this.txtExactRoot.setEnabled(false);
-                this.txtExactRoot.setText("");
-            }
-            if (option == 2) {
-                this.jLabel9.setVisible(true);
-                this.txtExactRoot.setVisible(true);
-                this.txtExactRoot.setEnabled(true);
-                this.jLabel6.setVisible(false);
-                this.txtIteractions.setVisible(false);
-                this.txtIteractions.setEnabled(false);
-                this.txtIteractions.setText("");
-            }
-        }
-    }//GEN-LAST:event_comboOptionActionPerformed
-
-    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        this.txtFunction.setText("");
-        this.txtIntervalA.setText("");
-        this.txtIntervalB.setText("");
-        this.txtIteractions.setText("");
-        this.txtExactRoot.setText("");
-        this.txtErr.setText("");
-        DefaultTableModel a = (DefaultTableModel) tbResultado.getModel();
-        while (a.getRowCount() > 0) {
-            a.removeRow(0);
-        }
-
-    }//GEN-LAST:event_btnCleanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

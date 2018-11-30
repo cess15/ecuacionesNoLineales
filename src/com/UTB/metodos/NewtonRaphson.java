@@ -111,18 +111,18 @@ public class NewtonRaphson {
                         String.format("%20f", errorResult)
                     };
                     model.addRow(fila);
+                    cont++;
+                    if (errorResult <= error) {
+                        break;
+                    }
                     derivada = fx.Derivate();
                     Function f2 = new Function(derivada);
                     Fix = f2.eval(interval);
                     x2 = -((Fxi) / (Fix));
                     interval = interval + (x2);
-                    cont++;
-                    if (errorResult <= error) {
-                        break;
-                    }
                 }
                 JOptionPane.showMessageDialog(
-                        null, "La raíz es: " + String.format("%10f", interval) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                        null, "La raíz es: " + String.format("%10f", interval) + " y se alcanzó en " + (cont - 1) + " iteraciones",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Esa no es la raiz exacta",

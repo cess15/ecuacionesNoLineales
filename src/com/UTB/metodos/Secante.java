@@ -61,7 +61,7 @@ public class Secante {
                 }
             } while (cont <= i);
             JOptionPane.showMessageDialog(
-                    null, "La raíz es: " + String.format("%10f", Fx0) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                    null, "La raíz se alcanzó en " + (cont - 1) + " iteraciones",
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en el metodo biseccion: " + e.getMessage());
@@ -100,14 +100,17 @@ public class Secante {
                         String.format("%20f", errorResult)
                     };
                     model.addRow(fila);
+                    cont++;
+                    if (errorResult <= error) {
+                        break;
+                    }
                     Fx1 = fx.eval(intervalB);
                     aux = intervalB;
                     intervalB = intervalB - (((intervalB - intervalA) / (Fx1 - Fx0)) * Fx1);
                     intervalA = aux;
-                    cont++;
                 }
                 JOptionPane.showMessageDialog(
-                        null, "La raíz es: " + String.format("%10f", Fx0) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                        null, "La raíz es: " + intervalA + " y se alcanzó en " + (cont - 1) + " iteraciones",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "La raiz no es exacta",
