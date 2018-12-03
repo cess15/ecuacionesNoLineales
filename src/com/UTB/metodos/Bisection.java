@@ -34,7 +34,7 @@ public class Bisection {
 
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi=(a+b)/2", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "xi=(a+b)/2", "f(xi)", "f(a)", "f(b)", "error=|b-a|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -45,7 +45,7 @@ public class Bisection {
             table.setModel(model);
             while (cont <= i) {
                 Xk = (intervalA + intervalB) / 2;
-                errorResult = Math.abs(intervalB - intervalA);//devuelve el valor absoluto del error
+                errorResult = Math.abs(intervalB - intervalA);
                 fXk = fx.eval(Xk);
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
@@ -55,9 +55,9 @@ public class Bisection {
                             intervalA,
                             intervalB,
                             String.format("%10f", Xk),
+                            String.format("%10f", fXk),
                             String.format("%10f", Fa),
                             String.format("%10f", Fb),
-                            String.format("%10f", fXk),
                             String.format("%20f", errorResult)};
                 model.addRow(row);
                 cont++;
@@ -89,7 +89,7 @@ public class Bisection {
             double Xk1 = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi=(a+b)/2", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "xi=(a+b)/2", "f(xi)", "f(a)", "f(b)", "error=|xi-xi-1|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -103,7 +103,7 @@ public class Bisection {
                 fXk = fx.eval(Xk);
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
-                errorResult = Math.abs(Xk - Xk1);//devuelve el valor absoluto del error
+                errorResult = Math.abs(Xk - Xk1);
                 Xk1 = Xk;
                 Object[] row
                         = {
@@ -111,9 +111,9 @@ public class Bisection {
                             intervalA,
                             intervalB,
                             String.format("%10f", Xk),
+                            String.format("%10f", fXk),
                             String.format("%10f", Fa),
                             String.format("%10f", Fb),
-                            String.format("%10f", fXk),
                             String.format("%20f", errorResult)};
                 model.addRow(row);
                 cont++;
@@ -145,7 +145,7 @@ public class Bisection {
             double isRoot = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "xi=(a+b)/2", "f(xi)", "f(a)", "f(b)", "error=|xi-√x|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -163,7 +163,7 @@ public class Bisection {
                     Fa = fx.eval(intervalA);
                     fXi = fx.eval(Xi);
                     Fb = fx.eval(intervalB);
-                    ResultadoError = Math.abs(Raiz - Xi);//devuelve el valor absoluto del error
+                    ResultadoError = Math.abs(Raiz - Xi);
                     Object[] fila = {
                         cont,
                         intervalA,

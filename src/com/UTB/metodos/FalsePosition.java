@@ -34,7 +34,7 @@ public class FalsePosition {
             int cont1 = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "xi=b-((b-a)*fb/(fb-fa))", "f(a)", "f(b)", "f(xi)", "error=|b-a|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -87,7 +87,7 @@ public class FalsePosition {
             double errorResult = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "xi=((a*fb)-(b*fa))/(fb-fa)", "f(a)", "f(b)", "f(xi)", "error=|xi-xi-1|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -145,7 +145,7 @@ public class FalsePosition {
             double eva = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "xi=((a*fb)-(b*fa))/(fb-fa)", "f(a)", "f(b)", "f(xi)", "error=|xi-√x|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -157,7 +157,6 @@ public class FalsePosition {
             Fa = fx.eval(intervalA);
             Fb = fx.eval(intervalB);
             Xi = ((intervalA * Fb) - (intervalB * Fa)) / (Fb - Fa);
-            Fxi = fx.eval(Xi);
             errorResult = Math.abs(raiz - Xi);
             eva = fx.eval(raiz);
             if (eva == 0) {

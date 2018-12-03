@@ -9,7 +9,6 @@ import com.UTB.funcion.Function;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.nfunk.jep.ParseException;
 
 /**
  *
@@ -17,7 +16,7 @@ import org.nfunk.jep.ParseException;
  */
 public class Secante {
 
-    public void calcSecantByIntervals(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
+    public void calcSecantByXi(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
             int cont = 1;
             double Fx0 = 0;
@@ -26,7 +25,7 @@ public class Secante {
             double aux = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "xi", "yi", "Error"};
+            String[] nombre_columnas = {"i", "xi", "yi", "error=|xi-xi-1|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -58,7 +57,7 @@ public class Secante {
                     null, "La raíz se alcanzó en " + (cont - 1) + " iteraciones",
                     "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en el metodo biseccion: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en el metodo secante: " + e.getMessage());
         }
     }
 
@@ -72,7 +71,7 @@ public class Secante {
             double eva = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "xi", "yi", "Error"};
+            String[] nombre_columnas = {"i", "xi", "yi", "error=|xi-√x|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {

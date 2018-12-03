@@ -35,7 +35,7 @@ public class NewtonRaphson {
             double xAnt = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "xi", "F(xi)=" + fx.getF(), "F'(xi)=" + fx.Derivate(), "Error"};
+            String[] nombre_columnas = {"i", "xi=a-((fF(xi))/(f'(xi)))", "f(xi)=" + fx.getF(), "f'(xi)=" + fx.Derivate(), "error=|xi-xi-1|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -88,7 +88,7 @@ public class NewtonRaphson {
             double eva = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "xi", "F(xi)=" + fx.getF(), "F'(xi)=" + fx.Derivate(), "Error"};
+            String[] nombre_columnas = {"i", "xi=a-((f(xi))/(f'(xi)))", "f(xi)=" + fx.getF(), "f'(xi)=" + fx.Derivate(), "error=|xi-√x|"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {

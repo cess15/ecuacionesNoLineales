@@ -302,7 +302,7 @@ public class JFRMetodoSecante extends javax.swing.JInternalFrame {
                             Function funcion = new Function(this.txtFunction.getText());
                             Secante secante = new Secante();
                             tbResultado.getModel();
-                            secante.calcSecantByIntervals(tbResultado, funcion, IA, IB, err, i);
+                            secante.calcSecantByXi(tbResultado, funcion, IA, IB, err, i);
                         } else {
                             JOptionPane.showMessageDialog(null, "Error. Especifique el maximo de iteraciones");
                         }

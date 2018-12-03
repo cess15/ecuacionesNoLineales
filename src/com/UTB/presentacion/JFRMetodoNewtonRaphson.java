@@ -72,7 +72,7 @@ public class JFRMetodoNewtonRaphson extends javax.swing.JInternalFrame {
         jLabel2.setText("FUNCION");
 
         jLabel3.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        jLabel3.setText("Aproximacion inicial: ");
+        jLabel3.setText("Punto a:");
 
         jLabel5.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel5.setText("Error: ");
@@ -199,9 +199,7 @@ public class JFRMetodoNewtonRaphson extends javax.swing.JInternalFrame {
                                 .addGap(48, 48, 48)
                                 .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(3, 3, 3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCalc, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnCalc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -405,46 +403,25 @@ public class JFRMetodoNewtonRaphson extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalc;
-    private javax.swing.JButton btnCalc3;
     private javax.swing.JButton btnClean;
-    private javax.swing.JButton btnClean3;
     private javax.swing.JComboBox<String> comboOption;
-    private javax.swing.JComboBox<String> comboOption3;
     private javax.swing.JComboBox<String> comboYesOrNot;
-    private javax.swing.JComboBox<String> comboYesOrNot3;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tbResultado;
-    private javax.swing.JTable tbResultado3;
     private javax.swing.JTextField txtErr;
-    private javax.swing.JTextField txtErr3;
     private javax.swing.JTextField txtExactRoot;
-    private javax.swing.JTextField txtExactRoot3;
     private javax.swing.JTextField txtFunction;
-    private javax.swing.JTextField txtFunction3;
     private javax.swing.JTextField txtIntervalA;
-    private javax.swing.JTextField txtIntervalA3;
     private javax.swing.JTextField txtIteractions;
-    private javax.swing.JTextField txtIteractions3;
     // End of variables declaration//GEN-END:variables
 }
