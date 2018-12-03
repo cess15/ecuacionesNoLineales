@@ -23,7 +23,61 @@ public class FalsePosition {
         return Fa * Fb < 0;
     }
 
-    public void calcFalsePosition(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
+    public void calcFalsePositionByIntervals(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
+        try {
+            int cont = 1;
+            double Xk = 0;
+            double Fa = 0;
+            double Fb = 0;
+            double Fx = 0;
+            double errorResult = 0;
+            int cont1 = 0;
+            DefaultTableModel model;
+            String[][] datos = {};
+            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            model = new DefaultTableModel(datos, nombre_columnas) {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+
+            };
+            table.setModel(model);
+            do {
+                Fa = fx.eval(intervalA);
+                Fb = fx.eval(intervalB);
+                Xk = intervalB -((intervalB-intervalA)*Fb/(Fb-Fa));
+                Fx = fx.eval(Xk);
+                errorResult = Math.abs(intervalB - intervalA);
+                Object[] fila = {
+                    cont,
+                    intervalA,
+                    intervalB,
+                    String.format("%10f", Xk),
+                    String.format("%10f", Fa),
+                    String.format("%10f", Fb),
+                    String.format("%10f", Fx),
+                    String.format("%20f", errorResult)};
+                if (Fa * Fx < 0) {
+                    intervalB = Xk;
+                } else {
+                    intervalA = Xk;
+                }
+                model.addRow(fila);
+                cont++;
+                if(Math.abs(Fx)<=error){
+                    break;
+                }
+            } while (cont <= i);
+            JOptionPane.showMessageDialog(
+                    null, "La raíz es: " + String.format("%10f", Xk) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                    "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en el metodo falsa posicion: " + e.getMessage());
+        }
+    }
+
+    public void calcFalsePositionByXi(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
             int cont = 1;
             double Xk = 0;

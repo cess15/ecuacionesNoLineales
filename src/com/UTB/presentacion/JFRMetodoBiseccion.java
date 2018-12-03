@@ -58,6 +58,8 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         comboOption = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txtExactRoot = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        comboYesOrNot = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -72,10 +74,10 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         jLabel2.setText("FUNCION");
 
         jLabel3.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        jLabel3.setText("Intervalo A: ");
+        jLabel3.setText("Punto a: ");
 
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        jLabel4.setText("Intervalo B: ");
+        jLabel4.setText("Punto b: ");
 
         jLabel5.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel5.setText("Error: ");
@@ -116,9 +118,9 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        jLabel8.setText("Calcular mediante: ");
+        jLabel8.setText("Calcular error mediante: ");
 
-        comboOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione una opcion-", "1. Iteracciones", "2. Raiz Exacta" }));
+        comboOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione una opcion-", "1. |b-a|", "2. |xi-xi-1|", "3. |xi-√ x|" }));
         comboOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboOptionActionPerformed(evt);
@@ -129,6 +131,16 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         jLabel9.setText("Raiz Exacta: ");
 
         txtExactRoot.setEnabled(false);
+
+        jLabel10.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        jLabel10.setText("Conoce la raiz exacta? ");
+
+        comboYesOrNot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione una opcion-", "1. SI", "2. NO" }));
+        comboYesOrNot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboYesOrNotActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -149,57 +161,62 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(comboOption, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtExactRoot, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(comboYesOrNot, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addContainerGap(229, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(comboYesOrNot, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(comboOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtIntervalA, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(txtIntervalA, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtExactRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addGap(37, 37, 37)
                                         .addComponent(jLabel4)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jLabel5)
-                                        .addGap(36, 36, 36))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                        .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel9)
-                                        .addGap(25, 25, 25)))
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtErr)
-                                    .addComponent(txtExactRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(120, 120, 120)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtErr, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(49, 49, 49)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCalc, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)))
+                        .addGap(3, 3, 3))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -222,20 +239,26 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                             .addComponent(txtIntervalB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(txtErr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(comboOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtExactRoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnClean, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addGap(21, 21, 21)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(comboYesOrNot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)
+                                .addComponent(txtExactRoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(txtIteractions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -251,37 +274,6 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void comboOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOptionActionPerformed
-        if (this.txtFunction.getText().isEmpty()
-            || (this.txtIntervalA.getText().isEmpty())
-            || (this.txtIntervalB.getText().isEmpty())
-            || (this.txtErr.getText().isEmpty())) {
-            this.comboOption.setSelectedIndex(0);
-            JOptionPane.showMessageDialog(null, "LLENE PRIMERO TODOS LOS CAMPOS ",
-                "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            int option = this.comboOption.getSelectedIndex();
-            if (option == 1) {
-                this.jLabel6.setVisible(true);
-                this.txtIteractions.setVisible(true);
-                this.txtIteractions.setEnabled(true);
-                this.jLabel9.setVisible(false);
-                this.txtExactRoot.setVisible(false);
-                this.txtExactRoot.setEnabled(false);
-                this.txtExactRoot.setText("");
-            }
-            if (option == 2) {
-                this.jLabel9.setVisible(true);
-                this.txtExactRoot.setVisible(true);
-                this.txtExactRoot.setEnabled(true);
-                this.jLabel6.setVisible(false);
-                this.txtIteractions.setVisible(false);
-                this.txtIteractions.setEnabled(false);
-                this.txtIteractions.setText("");
-            }
-        }
-    }//GEN-LAST:event_comboOptionActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         this.txtFunction.setText("");
@@ -299,11 +291,11 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         try {
             if (!this.txtFunction.getText().isEmpty()
-                && !(this.txtIntervalA.getText().isEmpty())
-                && !(this.txtIntervalB.getText().isEmpty())
-                && !(this.txtErr.getText().isEmpty())
-                || !(this.txtIteractions.getText().isEmpty())
-                || !(this.txtExactRoot.getText().isEmpty())) {
+                    && !(this.txtIntervalA.getText().isEmpty())
+                    && !(this.txtIntervalB.getText().isEmpty())
+                    && !(this.txtErr.getText().isEmpty())
+                    || !(this.txtIteractions.getText().isEmpty())
+                    || !(this.txtExactRoot.getText().isEmpty())) {
                 DJep j = new DJep();
                 j.addStandardConstants();
                 j.addStandardFunctions();
@@ -315,55 +307,140 @@ public class JFRMetodoBiseccion extends javax.swing.JInternalFrame {
                 double err = j.getValue();
                 j.parseExpression(this.txtExactRoot.getText());
                 double raiz = j.getValue();
-                int option = this.comboOption.getSelectedIndex();
-                if (option != 0) {
-                    if (option == 1) {
-                        int i = Integer.parseInt(this.txtIteractions.getText());
-                        Function funcion = new Function(this.txtFunction.getText());
-                        Bisection biseccion = new Bisection();
-                        tbResultado.getModel();
-                        try {
-                            if (biseccion.check(funcion, IA, IB)) {
-                                biseccion.calcsInteractions(tbResultado, funcion, IA, IB, err, i);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
+                //int option = this.comboOption.getSelectedIndex();
+                switch (this.comboOption.getSelectedIndex()) {
+                    case 1:
+                        if (!this.txtIteractions.getText().isEmpty()) {
+                            int i = Integer.parseInt(this.txtIteractions.getText());
+                            Function funcion = new Function(this.txtFunction.getText());
+                            Bisection biseccion = new Bisection();
+                            tbResultado.getModel();
+                            try {
+                                if (biseccion.check(funcion, IA, IB)) {
+                                    biseccion.calcsInteractionsByErrorIntervals(tbResultado, funcion, IA, IB, err, i);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
+                                }
+                            } catch (ParseException ex) {
+                                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                             }
-                        } catch (ParseException ex) {
-                            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error. Especifique el maximo de iteraciones");
                         }
-                    }
-                    if (option == 2) {
-                        Function funcion = new Function(this.txtFunction.getText());
-                        Bisection biseccion = new Bisection();
-                        tbResultado.getModel();
-                        try {
-                            if (biseccion.check(funcion, IA, IB)) {
-                                biseccion.calcByExactRoot(tbResultado, funcion, IA, IB, err, raiz);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
-                            }
-                        } catch (ParseException ex) {
-                            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-                        }
-                    }
-                }
+                        break;
 
+                    case 2:
+                        if (!this.txtIteractions.getText().isEmpty()) {
+                            int i = Integer.parseInt(this.txtIteractions.getText());
+                            Function funcion = new Function(this.txtFunction.getText());
+                            Bisection biseccion = new Bisection();
+                            tbResultado.getModel();
+                            try {
+                                if (biseccion.check(funcion, IA, IB)) {
+                                    biseccion.calcsInteractionsByXi(tbResultado, funcion, IA, IB, err, i);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
+                                }
+                            } catch (ParseException ex) {
+                                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error. Especifique el maximo de iteraciones");
+                        }
+                        break;
+                    case 3:
+                        if (!this.txtExactRoot.getText().isEmpty()) {
+                            Function funcion = new Function(this.txtFunction.getText());
+                            Bisection biseccion = new Bisection();
+                            tbResultado.getModel();
+                            try {
+                                if (biseccion.check(funcion, IA, IB)) {
+                                    biseccion.calcByExactRoot(tbResultado, funcion, IA, IB, err, raiz);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No existe ninguna raíz", "Verificación", 1);
+                                }
+                            } catch (ParseException ex) {
+                                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Debe especificar la raiz exacta");
+                        }
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Seleccione una opcion para calcular el error");
+                        break;
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Hay uno o varios campos vacios", "No se pudo calcular", JOptionPane.ERROR_MESSAGE);
-
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_btnCalcActionPerformed
 
+    private void comboOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOptionActionPerformed
+        if (this.comboYesOrNot.getSelectedIndex() != 0) {
+            if (this.comboYesOrNot.getSelectedIndex() == 1) {
+                if (this.comboOption.getSelectedIndex() != 3) {
+                    JOptionPane.showMessageDialog(null, "No se puede calcular el error con esa opcion");
+                    this.comboOption.setSelectedIndex(3);
+                }
+            }
+            if (this.comboYesOrNot.getSelectedIndex() == 2) {
+                if (this.comboOption.getSelectedIndex() == 3) {
+                    JOptionPane.showMessageDialog(null, "No se puede calcular el error con esa opcion");
+                    this.comboOption.setSelectedIndex(0);
+                    this.txtIteractions.setText("");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe responder si conoce la raiz exacta");
+            this.comboOption.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_comboOptionActionPerformed
+
+    private void comboYesOrNotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboYesOrNotActionPerformed
+        if (!this.txtFunction.getText().isEmpty()
+                && !(this.txtIntervalA.getText().isEmpty())
+                && !(this.txtIntervalB.getText().isEmpty())
+                && !(this.txtErr.getText().isEmpty())) {
+            switch (this.comboYesOrNot.getSelectedIndex()) {
+                case 1:
+                    this.jLabel9.setVisible(true);
+                    this.txtExactRoot.setVisible(true);
+                    this.txtExactRoot.setEnabled(true);
+                    this.txtIteractions.setText("");
+                    this.jLabel6.setVisible(false);
+                    this.txtIteractions.setVisible(false);
+                    this.txtIteractions.setEnabled(false);
+                    this.comboOption.setSelectedIndex(3);
+                    break;
+                case 2:
+                    this.jLabel6.setVisible(true);
+                    this.txtIteractions.setVisible(true);
+                    this.txtIteractions.setEnabled(true);
+                    this.txtExactRoot.setText("");
+                    this.jLabel9.setVisible(false);
+                    this.txtExactRoot.setVisible(false);
+                    this.txtExactRoot.setEnabled(false);
+                    this.comboOption.setSelectedIndex(0);
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene los campos requeridos");
+            this.comboYesOrNot.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_comboYesOrNotActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalc;
     private javax.swing.JButton btnClean;
     private javax.swing.JComboBox<String> comboOption;
+    private javax.swing.JComboBox<String> comboYesOrNot;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

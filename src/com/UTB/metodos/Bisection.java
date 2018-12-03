@@ -23,7 +23,7 @@ public class Bisection {
         return Fa * Fb <= 0;
     }
 
-    public void calcsInteractions(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
+    public void calcsInteractionsByErrorIntervals(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
             int cont = 1;
             double Xk = 0;
@@ -34,7 +34,7 @@ public class Bisection {
 
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "a", "b", "Xi", "f(a)", "f(b)", "f(Xi)", "Error"};
+            String[] nombre_columnas = {"i", "a", "b", "Xi=(a+b)/2", "f(a)", "f(b)", "f(Xi)", "Error"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -49,6 +49,62 @@ public class Bisection {
                 fXk = fx.eval(Xk);
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
+                Object[] row
+                        = {
+                            cont,
+                            intervalA,
+                            intervalB,
+                            String.format("%10f", Xk),
+                            String.format("%10f", Fa),
+                            String.format("%10f", Fb),
+                            String.format("%10f", fXk),
+                            String.format("%20f", errorResult)};
+                model.addRow(row);
+                cont++;
+                if (fXk * Fa < 0) {
+                    intervalB = Xk;
+                } else {
+                    intervalA = Xk;
+                }
+                if (errorResult <= error) {
+                    break;
+                }
+            }
+            JOptionPane.showMessageDialog(
+                    null, "La raíz es: " + String.format("%10f", Xk) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",
+                    "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en el metodo biseccion: " + e.getMessage());
+        }
+    }
+
+    public void calcsInteractionsByXi(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
+        try {
+            int cont = 1;
+            double Xk = 0;
+            double Fa = 0;
+            double Fb = 0;
+            double fXk = 0;
+            double errorResult = 0;
+            double Xk1 = 0;
+            DefaultTableModel model;
+            String[][] datos = {};
+            String[] nombre_columnas = {"i", "a", "b", "Xi=(a+b)/2", "f(a)", "f(b)", "f(Xi)", "Error"};
+            model = new DefaultTableModel(datos, nombre_columnas) {
+                @Override
+                public boolean isCellEditable(int i, int i1) {
+                    return false;
+                }
+
+            };
+            table.setModel(model);
+            while (cont <= i) {
+                Xk = (intervalA + intervalB) / 2;
+                fXk = fx.eval(Xk);
+                Fa = fx.eval(intervalA);
+                Fb = fx.eval(intervalB);
+                errorResult = Math.abs(Xk - Xk1);//devuelve el valor absoluto del error
+                Xk1 = Xk;
                 Object[] row
                         = {
                             cont,
@@ -126,7 +182,7 @@ public class Bisection {
                     model.addRow(fila);
                     cont++;
                 }
-                JOptionPane.showMessageDialog(null, "FELICIDADES SU RESPUESTA ES: " + String.format("%10f", Xi) + " \n ENCONTRADA EN " + (cont - 1) + " PASOS",
+                JOptionPane.showMessageDialog(null, "La raiz es: " + String.format("%10f", Xi) + " \n y se encontro en " + (cont - 1) + " iteraciones",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Esa no es la raiz exacta",

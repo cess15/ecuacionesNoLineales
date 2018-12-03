@@ -24,7 +24,7 @@ public class NewtonRaphson {
         return Fix == 0;
     }
 
-    public void calcNewtonRaphson(JTable table, Function fx, double interval, double error, int i) throws Exception {
+    public void calcNewtonRaphsonByXi(JTable table, Function fx, double interval, double error, int i) throws Exception {
         try {
             int cont = 1;
             double Fxi = 0;
@@ -35,7 +35,7 @@ public class NewtonRaphson {
             double xAnt = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "xi", "F(xi)", "F'(xi)", "Error"};
+            String[] nombre_columnas = {"i", "xi", "F(xi)=" + fx.getF(), "F'(xi)=" + fx.Derivate(), "Error"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {
@@ -88,7 +88,7 @@ public class NewtonRaphson {
             double eva = 0;
             DefaultTableModel model;
             String[][] datos = {};
-            String[] nombre_columnas = {"i", "xi", "F(xi)", "F'(xi)", "Error"};
+            String[] nombre_columnas = {"i", "xi", "F(xi)=" + fx.getF(), "F'(xi)=" + fx.Derivate(), "Error"};
             model = new DefaultTableModel(datos, nombre_columnas) {
                 @Override
                 public boolean isCellEditable(int i, int i1) {

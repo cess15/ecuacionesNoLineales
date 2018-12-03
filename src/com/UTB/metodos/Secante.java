@@ -17,13 +17,7 @@ import org.nfunk.jep.ParseException;
  */
 public class Secante {
 
-    public boolean check(Function f, double intervalA, double intervalB) throws ParseException {
-        double Fa = f.eval(intervalA);
-        double Fb = f.eval(intervalB);
-        return Fa * Fb < 0;
-    }
-
-    public void calcSecant(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
+    public void calcSecantByIntervals(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
             int cont = 1;
             double Fx0 = 0;
@@ -86,13 +80,12 @@ public class Secante {
                 }
             };
             table.setModel(model);
-            Fx0 = fx.eval(intervalA);
-            errorResult = Math.abs(intervalA - intervalB);
+            errorResult = Math.abs(raiz - intervalA);
             eva = fx.eval(raiz);
             if (eva == 0) {
                 while (errorResult >= error) {
                     Fx0 = fx.eval(intervalA);
-                    errorResult = Math.abs(intervalA - intervalB);
+                    errorResult = Math.abs(raiz - intervalA);
                     Object[] fila = {
                         cont,
                         intervalA,
