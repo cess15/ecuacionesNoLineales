@@ -162,7 +162,7 @@
               <Font name="Cambria" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="SOLUCION DE ECUACIONES NO LINEALES - METODO FALSA POSICION"/>
+            <Property name="text" type="java.lang.String" value="SOLUCION DE ECUACIONES NO LINEALES - METODO NEWTON RAPHSON"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

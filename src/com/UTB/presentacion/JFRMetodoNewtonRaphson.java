@@ -66,7 +66,7 @@ public class JFRMetodoNewtonRaphson extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SOLUCION DE ECUACIONES NO LINEALES - METODO FALSA POSICION");
+        jLabel1.setText("SOLUCION DE ECUACIONES NO LINEALES - METODO NEWTON RAPHSON");
 
         jLabel2.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         jLabel2.setText("FUNCION");

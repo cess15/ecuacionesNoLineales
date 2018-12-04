@@ -86,6 +86,7 @@ public class NewtonRaphson {
             double errorResult = 0;
             double x2 = 0;
             double eva = 0;
+            double xAnt=0;
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "xi=a-((f(xi))/(f'(xi)))", "f(xi)=" + fx.getF(), "f'(xi)=" + fx.Derivate(), "error=|xi-√x|"};
@@ -97,15 +98,20 @@ public class NewtonRaphson {
 
             };
             table.setModel(model);
-            errorResult = Math.abs(raiz - interval);
+            double xi=interval;
+            errorResult = Math.abs(raiz - xi);
             eva = fx.eval(raiz);
             if (eva == 0) {
                 while (errorResult >= error) {
-                    Fxi = fx.eval(interval);
-                    errorResult = Math.abs(raiz - interval);
+                    xAnt=xi;
+                    Fxi = fx.eval(xi);
+                    errorResult = Math.abs(raiz - xi);
+                    derivada = fx.Derivate();
+                    Function f2 = new Function(derivada);
+                    Fix = f2.eval(xi);
                     Object[] fila = {
                         cont,
-                        String.format("%10f", interval),
+                        String.format("%10f", xAnt),
                         String.format("%10f", Fxi),
                         String.format("%10f", Fix),
                         String.format("%20f", errorResult)
@@ -115,14 +121,11 @@ public class NewtonRaphson {
                     if (errorResult <= error) {
                         break;
                     }
-                    derivada = fx.Derivate();
-                    Function f2 = new Function(derivada);
-                    Fix = f2.eval(interval);
                     x2 = -((Fxi) / (Fix));
-                    interval = interval + (x2);
+                    xi = xi + (x2);
                 }
                 JOptionPane.showMessageDialog(
-                        null, "La raíz es: " + String.format("%10f", interval) + " y se alcanzó en " + (cont - 1) + " iteraciones",
+                        null, "La raíz es: " + String.format("%10f", xAnt) + " y se alcanzó en " + (cont - 1) + " iteraciones",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Esa no es la raiz exacta",
