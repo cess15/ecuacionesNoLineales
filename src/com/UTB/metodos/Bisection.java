@@ -158,7 +158,7 @@ public class Bisection {
             ResultadoError = Math.abs(Raiz - Xi);
             isRoot = fx.eval(Raiz);
             if (isRoot == 0) {
-                while (ResultadoError >= error) {
+                while (ResultadoError >= error || cont >= 100) {
                     Xi = (intervalA + intervalB) / 2;
                     Fa = fx.eval(intervalA);
                     fXi = fx.eval(Xi);
@@ -181,6 +181,10 @@ public class Bisection {
                     }
                     model.addRow(fila);
                     cont++;
+                    if (cont == 100) {
+                        JOptionPane.showMessageDialog(null, "La sucesion de puntos no se aproxima a la raiz");
+                        break;
+                    }
                 }
                 JOptionPane.showMessageDialog(null, "La raiz es: " + String.format("%10f", Xi) + " \n y se encontro en " + (cont - 1) + " iteraciones",
                         "MENSAJE", JOptionPane.INFORMATION_MESSAGE);

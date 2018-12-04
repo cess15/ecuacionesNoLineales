@@ -46,7 +46,7 @@ public class FalsePosition {
             do {
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
-                Xk = intervalB -((intervalB-intervalA)*Fb/(Fb-Fa));
+                Xk = intervalB - ((intervalB - intervalA) * Fb / (Fb - Fa));
                 Fx = fx.eval(Xk);
                 errorResult = Math.abs(intervalB - intervalA);
                 Object[] fila = {
@@ -65,7 +65,7 @@ public class FalsePosition {
                 }
                 model.addRow(fila);
                 cont++;
-                if(Math.abs(Fx)<=error){
+                if (Math.abs(Fx) <= error) {
                     break;
                 }
             } while (cont <= i);
@@ -160,7 +160,7 @@ public class FalsePosition {
             errorResult = Math.abs(raiz - Xi);
             eva = fx.eval(raiz);
             if (eva == 0) {
-                while (errorResult >= error) {
+                while (errorResult >= error || cont >= 100) {
                     Fa = fx.eval(intervalA);
                     Fb = fx.eval(intervalB);
                     Xi = ((intervalA * Fb) - (intervalB * Fa)) / (Fb - Fa);
@@ -182,6 +182,10 @@ public class FalsePosition {
                     }
                     model.addRow(fila);
                     cont++;
+                    if (cont == 100) {
+                        JOptionPane.showMessageDialog(null, "La sucesion de puntos no se aproxima a la raiz. Intente con otros puntos");
+                        break;
+                    }
                 }
                 JOptionPane.showMessageDialog(
                         null, "La raíz es: " + String.format("%10f", Xi) + " \n y se alcanzó en " + (cont - 1) + " iteraciones",

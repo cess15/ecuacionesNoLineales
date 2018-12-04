@@ -102,7 +102,7 @@ public class NewtonRaphson {
             errorResult = Math.abs(raiz - xi);
             eva = fx.eval(raiz);
             if (eva == 0) {
-                while (errorResult >= error) {
+                while (errorResult >= error || cont>=100) {
                     xAnt=xi;
                     Fxi = fx.eval(xi);
                     errorResult = Math.abs(raiz - xi);
@@ -119,6 +119,10 @@ public class NewtonRaphson {
                     model.addRow(fila);
                     cont++;
                     if (errorResult <= error) {
+                        break;
+                    }
+                    if (cont == 100) {
+                        JOptionPane.showMessageDialog(null, "La sucesion de aproximacion no converge a la raiz. Intente con otro punto");
                         break;
                     }
                     x2 = -((Fxi) / (Fix));

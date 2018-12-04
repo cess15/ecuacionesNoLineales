@@ -82,7 +82,7 @@ public class Secante {
             errorResult = Math.abs(raiz - intervalA);
             eva = fx.eval(raiz);
             if (eva == 0) {
-                while (errorResult >= error) {
+                while (errorResult >= error || cont>=100) {
                     Fx0 = fx.eval(intervalA);
                     errorResult = Math.abs(raiz - intervalA);
                     Object[] fila = {
@@ -95,6 +95,12 @@ public class Secante {
                     cont++;
                     if (errorResult <= error) {
                         break;
+                    }
+                    if(cont==100){
+                        if (cont == 100) {
+                        JOptionPane.showMessageDialog(null, "La sucesion de puntos no se aproxima a la raiz. Intente con otros puntos");
+                        break;
+                    }
                     }
                     Fx1 = fx.eval(intervalB);
                     aux = intervalB;
