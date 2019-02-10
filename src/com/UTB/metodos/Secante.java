@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.UTB.metodos;
 
 import com.UTB.funcion.Function;
@@ -16,13 +17,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Secante {
 
+    //Metodo para calcular la raiz por xi
     public void calcSecantByXi(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
-            int cont = 1;
-            double Fx0 = 0;
-            double Fx1 = 0;
-            double errorResult = 0;
-            double aux = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Fx0 = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fx1 = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double errorResult = 0; //Variable para almacenar el error a-b
+            double aux = 0; //Variable auxiliar para agilizar el proceso
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "xi", "yi", "error=|xi-xi-1|"};
@@ -61,14 +63,15 @@ public class Secante {
         }
     }
 
+    //Metodo para calcular la raiz por raiz exacta
     public void calcSecantByRoot(JTable table, Function fx, double intervalA, double intervalB, double error, double raiz) {
         try {
-            int cont = 1;
-            double Fx0 = 0;
-            double Fx1 = 0;
-            double errorResult = 0;
-            double aux = 0;
-            double eva = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Fx0 = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fx1 = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double errorResult = 0; //Variable para almacenar el error raiz-a
+            double aux = 0; //Variable auxiliar para agilizar el proceso
+            double eva = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para raiz
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "xi", "yi", "error=|xi-√x|"};

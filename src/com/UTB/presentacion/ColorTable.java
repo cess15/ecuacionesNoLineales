@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class ColorTable extends DefaultTableCellRenderer {
 
+    //Metodo para colorear las tablas de las vistas Biseccion y Falsa Posicion
     public Component getTableCellRendererComponent(final JTable table, Object value, boolean selected, boolean focused, int row, int column) {
         super.getTableCellRendererComponent(table, value, selected, focused, row, column);
         for (int i = 0; i < table.getRowCount(); i++) {

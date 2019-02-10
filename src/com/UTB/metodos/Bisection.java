@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 package com.UTB.metodos;
 
 import com.UTB.funcion.Function;
@@ -17,20 +17,22 @@ import org.nfunk.jep.ParseException;
  */
 public class Bisection {
 
+    //Metodo para comprobar si hay una raiz aproximada para los puntos
     public boolean check(Function f, double intervalA, double intervalB) throws ParseException {
         double Fa = f.eval(intervalA);
         double Fb = f.eval(intervalB);
         return Fa * Fb <= 0;
-    }
+    }  
 
+    //Metodo para calcular la raiz por intervalos
     public void calcsInteractionsByErrorIntervals(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
-            int cont = 1;
-            double Xk = 0;
-            double Fa = 0;
-            double Fb = 0;
-            double fXk = 0;
-            double errorResult = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Xk = 0; //Variable para almacenar el resultado de la formula a+b/2
+            double Fa = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fb = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double fXk = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Xk
+            double errorResult = 0; //Variable para almacenar el error b-a
 
             DefaultTableModel model;
             String[][] datos = {};
@@ -45,7 +47,7 @@ public class Bisection {
             table.setModel(model);
             while (cont <= i) {
                 Xk = (intervalA + intervalB) / 2;
-                errorResult = Math.abs(intervalB - intervalA);
+                errorResult = Math.abs(intervalB - intervalA); //Obtiene el valor absoluto del error
                 fXk = fx.eval(Xk);
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
@@ -78,15 +80,16 @@ public class Bisection {
         }
     }
 
+    //Metodo para calcular la raiz por xi
     public void calcsInteractionsByXi(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
-            int cont = 1;
-            double Xk = 0;
-            double Fa = 0;
-            double Fb = 0;
-            double fXk = 0;
-            double errorResult = 0;
-            double Xk1 = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Xk = 0; //Variable para almacenar el resultado de la formula a+b/2
+            double Fa = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fb = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double fXk = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Xk
+            double errorResult = 0; //Variable para almacenar el error Xk-Xk1
+            double Xk1 = 0; //Variable para almacenar el antiguo valor de Xk
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "a", "b", "xi=(a+b)/2", "f(xi)", "f(a)", "f(b)", "error=|xi-xi-1|"};
@@ -134,15 +137,16 @@ public class Bisection {
         }
     }
 
+    //Metodo para calcular la raiz por raiz exacta
     public void calcByExactRoot(JTable table, Function fx, double intervalA, double intervalB, double error, double Raiz) {
         try {
-            int cont = 1;
-            double Xi = 0;
-            double Fa = 0;
-            double fXi = 0;
-            double Fb = 0;
-            double ResultadoError = 0;
-            double isRoot = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Xi = 0; //Variable para almacenar el resultado de la formula a+b/2
+            double Fa = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double fXi = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Xi
+            double Fb = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double ResultadoError = 0; //Variable para almacenar el error Raiz-Xi
+            double isRoot = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Raiz
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "a", "b", "xi=(a+b)/2", "f(xi)", "f(a)", "f(b)", "error=|xi-√x|"};

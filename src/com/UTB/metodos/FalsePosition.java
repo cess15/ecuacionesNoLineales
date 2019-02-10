@@ -17,21 +17,22 @@ import org.nfunk.jep.ParseException;
  */
 public class FalsePosition {
 
+    //Metodo para comprobar si hay una raiz aproximada para los puntos
     public boolean check(Function fx, double intervalA, double intervalB) throws ParseException {
         double Fa = fx.eval(intervalA);
         double Fb = fx.eval(intervalB);
         return Fa * Fb < 0;
     }
 
+    //Metodo para calcular la raiz por intervalos
     public void calcFalsePositionByIntervals(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
-            int cont = 1;
-            double Xk = 0;
-            double Fa = 0;
-            double Fb = 0;
-            double Fx = 0;
-            double errorResult = 0;
-            int cont1 = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Xk = 0; //Variable para almacenar el resultado de la formula b-((b-a)*fb/(fb-fa))
+            double Fa = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fb = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double Fx = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Xk 
+            double errorResult = 0; //Variable para almacenar el error b-a
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "a", "b", "xi=b-((b-a)*fb/(fb-fa))", "f(a)", "f(b)", "f(xi)", "error=|b-a|"};
@@ -77,14 +78,15 @@ public class FalsePosition {
         }
     }
 
+    //Metodo para calcular la raiz por xi
     public void calcFalsePositionByXi(JTable table, Function fx, double intervalA, double intervalB, double error, int i) {
         try {
-            int cont = 1;
-            double Xk = 0;
-            double Fa = 0;
-            double Fb = 0;
-            double Fx = 0;
-            double errorResult = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Xk = 0; //Variable para almacenar el resultado de la formula b-((b-a)*fb/(fb-fa))
+            double Fa = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fb = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double Fx = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Xk
+            double errorResult = 0; //Variable para almacenar el error Xk-Xk1
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "a", "b", "xi=((a*fb)-(b*fa))/(fb-fa)", "f(a)", "f(b)", "f(xi)", "error=|xi-xi-1|"};
@@ -96,7 +98,7 @@ public class FalsePosition {
 
             };
             table.setModel(model);
-            double Xk1 = 0;
+            double Xk1 = 0; //Variable para almacenar el antiguo valor de Xk
             do {
                 Fa = fx.eval(intervalA);
                 Fb = fx.eval(intervalB);
@@ -134,15 +136,16 @@ public class FalsePosition {
         }
     }
 
+    //Metodo para calcular la raiz por raiz exacta
     public void calcByExactRoot(JTable table, Function fx, double intervalA, double intervalB, double error, double raiz) {
         try {
-            int cont = 1;
-            double Xi = 0;
-            double Fa = 0;
-            double Fxi = 0;
-            double Fb = 0;
-            double errorResult = 0;
-            double eva = 0;
+            int cont = 1; //Variable para contar las iteraciones
+            double Xi = 0; //Variable para almacenar el resultado de la formula b-((b-a)*fb/(fb-fa))
+            double Fa = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para a
+            double Fxi = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para Xi
+            double Fb = 0;  //Variable para almacenar el resultado de la funcion evaluada con respecto para b
+            double errorResult = 0; //Variable para almacenar el error raiz-Xi
+            double eva = 0; //Variable para almacenar el resultado de la funcion evaluada con respecto para raiz
             DefaultTableModel model;
             String[][] datos = {};
             String[] nombre_columnas = {"i", "a", "b", "xi=((a*fb)-(b*fa))/(fb-fa)", "f(a)", "f(b)", "f(xi)", "error=|xi-√x|"};
